@@ -74,7 +74,6 @@ public class InterpolationStrategyController {
     }
 
     private void setupSegmentsSlider() {
-        // Обработчик изменения слайдера
         segmentsSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             segments = newValue.intValue();
             segmentsLabel.setText("Сегментов: " + segments);
@@ -190,16 +189,13 @@ public class InterpolationStrategyController {
 
         List<Point2D> points = pointManager.getPoints();
 
-        // Рисуем контрольные точки
         interpolationViewer.drawControlPoints(canvas, points, draggedPointIndex);
 
-        // Рисуем кривую если достаточно точек
         if (pointManager.hasEnoughPointsForCurve() && currentStrategy != null) {
             try {
                 List<Point2D> curvePoints = currentStrategy.calculate(points, segments);
                 interpolationViewer.drawCurve(canvas, curvePoints);
 
-                // Рисуем контрольный полигон только для Безье
                 if (currentStrategy instanceof BezierStrategy) {
                     interpolationViewer.drawControlPolygon(canvas, points);
                 }

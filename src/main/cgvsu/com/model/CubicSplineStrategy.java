@@ -69,7 +69,7 @@ public class CubicSplineStrategy implements InterpolationStrategyImpl<Point2D> {
         return t < sortedPoints.get(0).getX() ? sortedPoints.get(0) : sortedPoints.get(sortedPoints.size() - 1);
     }
 
-    private double[] calculateSecondDerivatives(List<Point2D> points) {
+    protected double[] calculateSecondDerivatives(List<Point2D> points) {
         int n = points.size();
         double[] x = new double[n];
         double[] y = new double[n];
@@ -102,7 +102,7 @@ public class CubicSplineStrategy implements InterpolationStrategyImpl<Point2D> {
         return secondDerivatives;
     }
 
-    private double interpolateSpline(Point2D p1, Point2D p2, double ypp1, double ypp2, double x) {
+    protected double interpolateSpline(Point2D p1, Point2D p2, double ypp1, double ypp2, double x) {
         double h = p2.getX() - p1.getX();
         double a = (p2.getX() - x) / h;
         double b = (x - p1.getX()) / h;

@@ -30,7 +30,7 @@ public class BezierStrategy implements InterpolationStrategyImpl<Point2D> {
         return calculatePointCasteljau(points, t);
     }
 
-    private Point2D calculatePointCasteljau(List<Point2D> points, double t) {
+    protected Point2D calculatePointCasteljau(List<Point2D> points, double t) {
         int n = points.size() - 1;
         if (n == 0) {
             return points.getFirst();
@@ -52,7 +52,7 @@ public class BezierStrategy implements InterpolationStrategyImpl<Point2D> {
         return temp[0];
     }
 
-    public static Point2D calculatePointBernstein(List<Point2D> points, double t) {
+    protected static Point2D calculatePointBernstein(List<Point2D> points, double t) {
         int n = points.size() - 1;
         double x = 0;
         double y = 0;
@@ -68,7 +68,7 @@ public class BezierStrategy implements InterpolationStrategyImpl<Point2D> {
         return new Point2D(x, y);
     }
 
-    private static double binomialCoefficient(int n, int k) {
+    protected static double binomialCoefficient(int n, int k) {
         if (k < 0 || k > n) return 0;
         if (k == 0 || k == n) return 1;
 

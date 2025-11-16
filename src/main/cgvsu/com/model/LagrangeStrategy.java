@@ -34,7 +34,7 @@ public class LagrangeStrategy implements InterpolationStrategyImpl<Point2D> {
         return calculatePointForX(points, t);
     }
 
-    private Point2D calculatePointForX(List<Point2D> points, double x) {
+    protected Point2D calculatePointForX(List<Point2D> points, double x) {
         double y = 0;
         int n = points.size();
 
@@ -48,7 +48,7 @@ public class LagrangeStrategy implements InterpolationStrategyImpl<Point2D> {
         return new Point2D(x, y);
     }
 
-    private double lagrangeBasis(List<Point2D> points, int i, double x) {
+    protected double lagrangeBasis(List<Point2D> points, int i, double x) {
         double result = 1.0;
         double xi = points.get(i).getX();
         int n = points.size();
